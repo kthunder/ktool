@@ -1,27 +1,18 @@
 import click
 
+from .hex_to_array import hex_to_array
+
 
 @click.group()
 @click.option('--debug/--no-debug', default=False)
 def cli(debug):
     pass
-    # click.echo('Debug mode is %s' % ('on' if debug else 'off'))
-
-
-@cli.command()
-def hello1():
-    click.secho(f"Hello1", fg = 'green')
-
-
-@cli.command()
-def hello():
-    click.secho(f"Hello", fg='red')
 
 
 @cli.command()
 @click.argument("hex_str")
-def toArray(hex_str):
-    click.secho(f"{hex_str}", fg='red')
+def to_array(hex_str):
+    click.secho(hex_to_array(hex_str), fg='green')
 
 
 if __name__ == "__main__":
